@@ -1,0 +1,46 @@
+version: '3.8'  # Você pode usar a versão apropriada para o seu caso
+
+services:
+  teste:
+    image: mysql:latest
+    ports:
+      - "3306:3306"  # Mapeamento de porta (host:container)
+    volumes:
+      - C:\Users\gusta\OneDrive\Desktop\database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=carro
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=
+
+  container2:
+    image: imagem_do_container2:latest
+    ports:
+      - "8082:80"
+    volumes:
+      - /caminho/para/volume2:/caminho/no/container2
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=carro
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=
+
+  container3:
+    image: imagem_do_container3:latest
+    ports:
+      - "8083:80"
+    volumes:
+      - /caminho/para/volume3:/caminho/no/container3
+    environment:
+      - VARIAVEL1=valor1
+      - VARIAVEL2=valor2
+
+  container4:
+    image: imagem_do_container4:latest
+    ports:
+      - "8084:80"
+    volumes:
+      - /caminho/para/volume4:/caminho/no/container4
+    environment:
+      - VARIAVEL1=valor1
+      - VARIAVEL2=valor2
