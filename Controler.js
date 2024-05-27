@@ -37,6 +37,23 @@ app.post('/create', async(req,res)=>{
     res.send('Usuário cadastrado com sucesso!!!');
 });
 
+//PRECISAMOS CONFIRMAR OS PARAMETROS AQUI
+//PRECISAMOS CRIAR OS MODELS DA TABELA LOCACAO
+app.post('/confirma', async(req,res)=>{
+    await locacao.create({
+        id_carro: req.body.id_locacao,
+        id_cliente: req.body.id_cliente,
+        data_inicio: req.body.data_inicio,
+        data_fim: req.body.data_fim,
+        valor_total: req.body.valor_total,
+        status: req.body.status,
+        metodo_pagamento: req.body.metodo_pagamento,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    });
+    res.send('Confirmado!!!');
+});
+
 app.get('/carro',async(req,res)=>{
     let read=await veiculo.findAll({
         raw:true,
