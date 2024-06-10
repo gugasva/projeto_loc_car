@@ -13,34 +13,40 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=
 
-  container2:
-    image: imagem_do_container2:latest
+  frontend:
+    build: ../../frontend
     ports:
-      - "8082:80"
+      - "19000:19000"
+      - "19001:19001"
+      - "19002:19002"
     volumes:
-      - /caminho/para/volume2:/caminho/no/container2
+      - ../frontend:/app
+      - /app/node_modules
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=carro
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=
+      - NODE_ENV=development
 
-  container3:
-    image: imagem_do_container3:latest
+  backend:
+    build: ../../backend
     ports:
-      - "8083:80"
+      - "3000:3000"
     volumes:
-      - /caminho/para/volume3:/caminho/no/container3
+      - ../backend:/usr/src/app
+      - /usr/src/app/node_modules
     environment:
-      - VARIAVEL1=valor1
-      - VARIAVEL2=valor2
+      - NODE_ENV=development
+
 
   container4:
-    image: imagem_do_container4:latest
+    image: loadbalancer
     ports:
-      - "8084:80"
-    volumes:
-      - /caminho/para/volume4:/caminho/no/container4
-    environment:
-      - VARIAVEL1=valor1
-      - VARIAVEL2=valor2
+      - "90:80"
+  
+  container5:
+    image: nginxc
+    ports:
+      - "80:80"
+
+  container6:
+    image: nginxc
+    ports:
+      - "81:80"

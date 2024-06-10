@@ -12,7 +12,7 @@ export default function Carro() {
   useEffect(() => {
     async function fetchCarros() {
       try {
-        const response = await fetch('http://192.168.0.6:3000/carro');
+        const response = await fetch("http://192.168.165.140:3000/carro");
         if (response.ok) {
           const data = await response.json();
           setCarros(data);

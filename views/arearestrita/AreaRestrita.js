@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Profile, Edicao, Carro, telaConfirmacao } from '../index';
+import { Profile, Edicao, Carro, telaConfirmacao, ChangePassword } from '../index';
 import { css } from '../../assets/css/css';
 
 const Tab = createBottomTabNavigator();
@@ -14,6 +14,8 @@ function CarroStack() {
         <Stack.Navigator>
             <Stack.Screen name="CarroList" component={Carro} options={{ headerShown: false }} />
             <Stack.Screen name="telaConfirmacao" component={telaConfirmacao} options={{ headerShown: false }} />
+            <Stack.Screen name="ChangePassword" component={ChangePassword} options={{ headerShown: false }} />
+
         </Stack.Navigator>
     );
 }
@@ -50,7 +52,7 @@ export default function AreaRestrita() {
 
       <Tab.Screen name="Edicao" component={Edicao} />
 
-      <Tab.Screen name="Carro" component={CarroStack} />
+      <Tab.Screen name="Carro" component={CarroStack} options={{ title:"WEBMOTORS"}}/>
 
 
     </Tab.Navigator>

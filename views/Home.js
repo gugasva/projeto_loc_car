@@ -6,7 +6,7 @@ export default function Home(props)
 {
     console.log(props)
     return(
-        <View style={[css.container, css.darkbg]}>
+        <View style={[css.container]}>
             <Text style={css.text_pattern}>BEM VINDO</Text>
             <TouchableOpacity style={css.button} onPress={() => props.navigation.navigate('Login')}>
         <Text style={css.buttonText}>Ir para Login</Text>

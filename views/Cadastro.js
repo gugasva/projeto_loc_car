@@ -16,7 +16,7 @@ export default function Cadastro()
 
     async function sendForm()
     {
-        let response= await fetch('http://192.168.0.6:3000/create',{
+        let response= await fetch("http://192.168.165.140:3000/create",{
             method: 'POST',
             headers:{
                 Aceept: 'application/json',
@@ -42,7 +42,7 @@ export default function Cadastro()
 
     
     return(
-        <KeyboardAvoidingView style={[css.container, css.darkbg]}>
+        <KeyboardAvoidingView style={[css.container]}>
             <View>
                     <Text style={css.text_pattern}>BEM VINDO</Text>
             </View>

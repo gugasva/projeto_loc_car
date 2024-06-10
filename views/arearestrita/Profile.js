@@ -4,23 +4,43 @@ import {css} from '../../assets/css/css';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
 export default function Profile({navigation})
 {
-    async function logout(){
-        await AsyncStorage.clear();
-        navigation.navigate('Login');
-    }
+    const [cliente, setCliente] = useState(null);
 
-    return(
-        <View style={css.area_title}>
+    useEffect(() => {
+        async function loadCliente() {
+            const clienteData = await AsyncStorage.getItem('clienteData');
+            if (clienteData) {
+                setCliente(JSON.parse(clienteData));
+            }
+        }
 
-            <TouchableOpacity style={css.logout_button} onPress={()=>logout()}>
-                <Icon name="sign-out" size={20} color="#999"/>
-            </TouchableOpacity>
+        loadCliente();
+    }, []);
 
-            <Text style={css.title}>Profile</Text>
-           
+    const handleChangePassword = () => {
+        // Navegar para a tela de alteração de senha
+        navigation.navigate('ChangePassword');
+    };
 
+    return (
+        <View style={[css.container]}>
+            {cliente ? (
+                <View>
+                    <Text style={css.text_pattern}>Nome: {cliente.nome}</Text>
+                    <Text style={css.text_pattern}> Email: {cliente.email}</Text>
+                    <Text style={css.text_pattern}>Telefone: {cliente.telefone}</Text>
+                    <Text style={css.text_pattern}>User: {cliente.usuario}</Text>
+
+                    <TouchableOpacity style={css.button} title="Alterar Senha" onPress={handleChangePassword} >
+                        <Text style={css.buttonText}>Alterar Senha</Text>
+                    </TouchableOpacity>
+                </View>
+            ) : (
+                <Text>Carregando...</Text>
+            )}
         </View>
     );
 }

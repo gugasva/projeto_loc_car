@@ -26,11 +26,13 @@ const css = StyleSheet.create({
         width: "80%"
     },
     login_input:{
-        backgroundColor: "#ffff",
-        fontSize: 19,
-        padding: 7,
-        marginBottom: 20,
-        justifyContent: "space-around"
+      height: 40,
+      borderColor: 'gray',
+      borderWidth: 1,
+      borderRadius: 5,
+      marginBottom: 10,
+      paddingHorizontal: 10,
+      backgroundColor: '#C7C7C7'
     },
     login_button:{
         padding: 10,
@@ -47,9 +49,10 @@ const css = StyleSheet.create({
         justifyContent: 'center'
     },
     text_pattern:{
-        color: '#fff',
+        color: '#333',
         fontSize: 20,
-        fontStyle: 'italic',
+        alignItems: 'center',
+        margin: 10
     },
     area_tab:{
         backgroundColor: '#333',
@@ -135,12 +138,13 @@ const css = StyleSheet.create({
       borderRadius: 5,
       marginBottom: 10,
       paddingHorizontal: 10,
-      backgroundColor: '#fff'
+      backgroundColor: '#C7C7C7'
     },
     buttonContainer: {
       width: '100%',
       alignItems: 'center',
       marginTop: 10,
+      backgroundColor: '#333'
     },
     button: {
       width: '80%',
